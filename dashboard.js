@@ -1,9 +1,10 @@
 // dashboard.js
 
+const { createClient } = supabaseJs;
 // Supabase config
 const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co'; // Ganti sesuai proyek kamu
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho'; // Ganti sesuai key kamu
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Fetch data dari tabel wallet_activity
 async function loadWalletActivity() {
@@ -18,7 +19,19 @@ async function loadWalletActivity() {
     document.getElementById('wallet-activity').innerHTML = '<p>Gagal ambil data 😥</p>';
     return;
   }
+    const container = document.getElementById('wallet-activity');
+    container.innerHTML = data.map(item => `
+    <div>
+   
+    <strong>${item.wallet_address}</strong>: ${item.activity_type} - ${item.amount}
+    </div>
+     `).join('');
+  }
 
+
+
+
+  
   // Render tabel
   let html = `
     <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
