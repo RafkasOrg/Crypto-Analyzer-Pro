@@ -1,1 +1,28 @@
-<!DOCTYPE html><html><head><title>Dashboard</title></head><body><h1>Dashboard Dummy</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Analyzer Pro - Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #whale-table { margin-bottom: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h1>📊 Whale Tracker</h1>
+
+  <!-- Tabel Whale Transaction -->
+  <div id="whale-table">Loading data...</div>
+
+  <!-- Chart Aliran Masuk/Keluar -->
+  <canvas id="exchangeFlowChart" width="600" height="300"></canvas>
+
+  <!-- Script Whale Tracker -->
+  <script src="whaleTracker.js" type="module"></script>
+
+</body>
+</html>
