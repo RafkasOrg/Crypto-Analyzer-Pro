@@ -1,31 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard</title>
-  <style>
-    #whale-table { margin-bottom: 20px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Analyzer Pro</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="dashboard.js"></script>
 </head>
 <body>
-  <h1>📊 Whale Tracker</h1>
-  <h2>Wallet Activity Terbaru</h2>
-  <div id="wallet-activity">Loading...</div>
+  <header>
+    <h1>Crypto Analyzer Pro</h1>
+    <nav>
+      <ul>
+        <li><a href="#market">Market</a></li>
+        <li><a href="#sentiment">Sentiment</a></li>
+        <li><a href="#wallets">Wallets</a></li>
+        <li><a href="#alerts">Smart Alerts</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Tabel Whale Transaction -->
-  <div id="whale-table">Loading data...</div>
+  <main>
+    <!-- Market Fundamentals -->
+    <section id="market">
+      <h2>Market Fundamentals</h2>
+      <div id="market-data"></div>
+    </section>
 
-  <!-- Chart Aliran Masuk/Keluar -->
-  <canvas id="exchangeFlowChart" width="600" height="300"></canvas>
+    <!-- Sentiment Analyzer -->
+    <section id="sentiment">
+      <h2>Sentiment Analyzer</h2>
+      <canvas id="sentimentChart"></canvas>
+      <div id="sentiment-table"></div>
+    </section>
 
-  <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <!-- Wallet Tracker -->
+    <section id="wallets">
+      <h2>Wallet Tracker</h2>
+      <div id="wallet-data"></div>
+    </section>
 
-  <!-- Script Whale Tracker -->
-  <script src="dashboard.js"></script>
-  <script src="whaleTracker.js"></script>
+    <!-- Smart Alerts -->
+    <section id="alerts">
+      <h2>Smart Alerts & Auto-Trading</h2>
+      <div id="alerts-section"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data powered by CoinGecko, Dune, WhaleAlert, etc.</p>
+  </footer>
 </body>
 </html>
-
