@@ -2,32 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Whale Tracker Pro</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body { background-color: #1e1e1e; color: white; padding: 20px; }
+    .section-title { margin-top: 20px; }
+    input, .form-control, .btn { border-radius: 6px; }
+  </style>
 </head>
-<body class="bg-dark text-white">
+<body>
+  <h2>🐋 Whale Tracker Pro</h2>
 
-  <div class="container py-4">
-    <h2 class="mb-4">🐋 Whale Tracker Pro</h2>
-
-    <form id="wallet-form" class="mb-3">
-      <div class="input-group">
-        <input type="text" id="wallet-address" class="form-control" placeholder="Masukkan wallet address (ETH/BSC/SOL)" required />
-        <button type="submit" class="btn btn-success">Tambah Wallet</button>
-      </div>
-    </form>
-
-    <h5>📋 Wallet Favorit Anda:</h5>
-    <ul id="wallet-list" class="list-group mb-4"></ul>
-
-    <h5>📊 Aktivitas Wallet Terakhir:</h5>
-    <div id="wallet-activity" class="bg-light text-dark p-3 rounded"></div>
+  <div class="mb-3">
+    <input id="walletInput" type="text" placeholder="Masukkan wallet address (ETH/BSC/SOL)" class="form-control" />
+    <button id="addWallet" class="btn btn-success mt-2">Tambah Wallet</button>
   </div>
 
-  <script src="dashboard.js"></script>
+  <h4 class="section-title">📁 Wallet Favorit Anda:</h4>
+  <ul id="walletList" class="list-group mb-4"></ul>
+
+  <h4 class="section-title">📊 Aktivitas Wallet Terakhir:</h4>
+  <div id="walletActivity">Memuat aktivitas...</div>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script type="module" src="dashboard.js"></script>
 </body>
 </html>
+
