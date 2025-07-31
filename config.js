@@ -1,0 +1,2 @@
+// Dummy Config
+const config = {};
