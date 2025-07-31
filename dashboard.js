@@ -11,7 +11,7 @@ const walletList = document.getElementById("walletList");
 const walletActivity = document.getElementById("walletActivity");
 
 async function loadWallets() {
-  const { data, error } = await supabase.from("wallets").select("*");
+  const { data, error } = await supabase.from("wallet").select("*");
   walletList.innerHTML = "";
 
   if (data && data.length) {
@@ -33,7 +33,7 @@ addWalletBtn.onclick = async () => {
   const address = walletInput.value.trim();
   if (!address) return;
 
-  const { error } = await supabase.from("wallets").insert({ address });
+  const { error } = await supabase.from("wallet").insert({ address });
   if (!error) {
     walletInput.value = "";
     loadWallets();
