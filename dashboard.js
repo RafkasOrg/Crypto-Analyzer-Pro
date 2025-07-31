@@ -1,9 +1,9 @@
 // dashboard.js
 const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co'; // Ganti sesuai proyek kamu
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho'; // Ganti sesuai key kamu
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// Fungsi untuk ambil data Whale Alert dari Supabase
+// Fungsi load data Whale Alert
 async function loadWhaleData() {
   const table = document.querySelector("#whaleTable tbody");
   table.innerHTML = "<tr><td colspan='6'>Loading...</td></tr>";
@@ -25,6 +25,7 @@ async function loadWhaleData() {
     return;
   }
 
+  // Tampilkan hasil
   table.innerHTML = "";
   data.forEach(tx => {
     const row = document.createElement("tr");
@@ -39,6 +40,3 @@ async function loadWhaleData() {
     table.appendChild(row);
   });
 }
-
-
-
