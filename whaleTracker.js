@@ -1,7 +1,6 @@
 // whaleTracker.js
 const WHALE_API = 'https://api.whale-alert.io/v1/transactions';
-const API_KEY = 'YOUR_API_KEY'; // Ganti dengan API key asli
-
+const API_KEY = '2y0uRr34lAp1k3yHeRe'; // Ganti dengan API key asli
 export async function fetchWhaleData() {
   const now = Math.floor(Date.now() / 1000); // Waktu saat ini (UNIX timestamp)
   const url = `${WHALE_API}?api_key=${API_KEY}&min_value=1000000&start=${now - 3600}`; // 1 jam terakhir
