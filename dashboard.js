@@ -1,70 +1,50 @@
 // dashboard.js
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
 // Supabase config
 const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co'; // Ganti sesuai proyek kamu
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho'; // Ganti sesuai key kamu
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const walletInput = document.getElementById("walletInput");
-const addWalletBtn = document.getElementById("addWallet");
-const walletList = document.getElementById("walletList");
-const walletActivity = document.getElementById("walletActivity");
+// Fungsi load data Whale Alert dari Supabase
+async function loadWhaleAlerts() {
+  const container = document.getElementById("whale-alert-container");
+  container.innerHTML = "<p>Loading alerts...</p>";
 
-async function loadWallets() {
-  const { data, error } = await supabase.from("wallet").select("*");
-  walletList.innerHTML = "";
+  const { data, error } = await supabase
+    .from("whale_alerts")
+    .select("*")
+    .order("timestamp", { ascending: false })
+    .limit(10);
 
-  if (data && data.length) {
-    for (const item of data) {
-      const li = document.createElement("li");
-      li.className = "list-group-item bg-dark text-white border-light";
-      li.innerText = item.address;
-      walletList.appendChild(li);
-
-      // Ambil aktivitas per address
-      fetchActivity(item.address);
-    }
-  } else {
-    walletList.innerHTML = "<li class='text-muted'>Belum ada wallet favorit.</li>";
+  if (error) {
+    container.innerHTML = `<p class="text-danger">Error loading whale alerts: ${error.message}</p>`;
+    return;
   }
+
+  container.innerHTML = "";
+
+  data.forEach((alert) => {
+    const card = document.createElement("div");
+    card.className = "col-md-6 col-lg-4 mb-4";
+    card.innerHTML = `
+      <div class="card p-3 shadow">
+        <h5 class="card-title">${alert.crypto_symbol} - ${alert.transaction_type}</h5>
+        <p class="card-text">
+          <strong>Amount:</strong> ${Number(alert.amount).toLocaleString()} ${alert.crypto_symbol}<br>
+          <strong>From:</strong> ${alert.from_address || 'Unknown'}<br>
+          <strong>To:</strong> ${alert.to_address || 'Unknown'}<br>
+          <strong>Exchange:</strong> ${alert.exchange || 'Unlabeled'}<br>
+          <small class="text-secondary">${new Date(alert.timestamp).toLocaleString()}</small>
+        </p>
+        <span class="alert-badge">${alert.status || "Detected"}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
 }
 
-addWalletBtn.onclick = async () => {
-  const address = walletInput.value.trim();
-  if (!address) return;
-
-  const { error } = await supabase.from("wallet").insert({ address });
-  if (!error) {
-    walletInput.value = "";
-    loadWallets();
-  }
-};
-
-async function fetchActivity(address) {
-  const url = `https://api.whale-alert.io/v1/transactions?api_key=YOUR_API_KEY&limit=1&address=${address}`;
-
-  try {
-    const res = await fetch(url);
-    const json = await res.json();
-
-    if (json.transactions && json.transactions.length) {
-      const tx = json.transactions[0];
-      const info = `
-        <p>💸 ${tx.symbol} - ${tx.amount} ${tx.symbol} (${tx.from.owner} ➜ ${tx.to.owner})</p>
-        <p>🕒 ${new Date(tx.timestamp * 1000).toLocaleString()}</p>
-        <hr />
-      `;
-      walletActivity.innerHTML += info;
-    } else {
-      walletActivity.innerHTML += `<p>Tidak ditemukan transaksi untuk ${address}</p>`;
-    }
-  } catch (err) {
-    walletActivity.innerHTML += `<p class="text-danger">Gagal mengambil data untuk ${address}</p>`;
-  }
-}
-
-// Inisialisasi
-loadWallets();
+// Jalankan saat halaman dimuat
+document.addEventListener("DOMContentLoaded", loadWhaleAlerts);
 
 
 
