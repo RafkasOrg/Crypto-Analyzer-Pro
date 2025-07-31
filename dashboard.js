@@ -1,93 +1,71 @@
 // dashboard.js
-
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 // Supabase config
 const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co'; // Ganti sesuai proyek kamu
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho'; // Ganti sesuai key kamu
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Ambil referensi elemen DOM
-const walletForm = document.getElementById("wallet-form");
-const walletInput = document.getElementById("wallet-address");
-const walletList = document.getElementById("wallet-list");
-const walletActivity = document.getElementById("wallet-activity");
+const walletInput = document.getElementById("walletInput");
+const addWalletBtn = document.getElementById("addWallet");
+const walletList = document.getElementById("walletList");
+const walletActivity = document.getElementById("walletActivity");
 
-// Event tambah wallet
-walletForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const address = walletInput.value.trim();
-
-  if (!address) return;
-
-  // Simpan ke Supabase
-  const { error } = await supabase.from("wallets").insert({ address });
-  if (error) {
-    Swal.fire("Gagal", "Gagal menyimpan wallet!", "error");
-    return;
-  }
-
-  Swal.fire("Berhasil", "Wallet ditambahkan", "success");
-  walletInput.value = "";
-  loadWallets();
-});
-
-// Muat wallet dari Supabase
 async function loadWallets() {
-  const { data, error } = await supabase.from("wallets").select("*").order("id", { ascending: false });
-
+  const { data, error } = await supabase.from("wallets").select("*");
   walletList.innerHTML = "";
 
-  if (error) {
-    walletList.innerHTML = "<li class='list-group-item text-danger'>Gagal memuat wallet</li>";
-    return;
-  }
+  if (data && data.length) {
+    for (const item of data) {
+      const li = document.createElement("li");
+      li.className = "list-group-item bg-dark text-white border-light";
+      li.innerText = item.address;
+      walletList.appendChild(li);
 
-  data.forEach((item) => {
-    const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
-    li.innerHTML = `
-      ${item.address}
-      <button class="btn btn-sm btn-outline-danger" onclick="deleteWallet(${item.id})">Hapus</button>
-    `;
-    walletList.appendChild(li);
-  });
+      // Ambil aktivitas per address
+      fetchActivity(item.address);
+    }
+  } else {
+    walletList.innerHTML = "<li class='text-muted'>Belum ada wallet favorit.</li>";
+  }
 }
 
-// Hapus wallet
-async function deleteWallet(id) {
-  const { error } = await supabase.from("wallets").delete().eq("id", id);
+addWalletBtn.onclick = async () => {
+  const address = walletInput.value.trim();
+  if (!address) return;
+
+  const { error } = await supabase.from("wallets").insert({ address });
   if (!error) {
-    Swal.fire("Dihapus", "Wallet berhasil dihapus", "info");
+    walletInput.value = "";
     loadWallets();
   }
-}
+};
 
-// Muat dummy aktivitas wallet
-async function loadWalletActivity() {
-  const { data, error } = await supabase.from("wallets").select("*").order("id", { ascending: false });
+async function fetchActivity(address) {
+  const url = `https://api.whale-alert.io/v1/transactions?api_key=YOUR_API_KEY&limit=1&address=${address}`;
 
-  walletActivity.innerHTML = "";
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
 
-  if (error || !data.length) {
-    walletActivity.innerHTML = "<p>Tidak ada aktivitas.</p>";
-    return;
+    if (json.transactions && json.transactions.length) {
+      const tx = json.transactions[0];
+      const info = `
+        <p>💸 ${tx.symbol} - ${tx.amount} ${tx.symbol} (${tx.from.owner} ➜ ${tx.to.owner})</p>
+        <p>🕒 ${new Date(tx.timestamp * 1000).toLocaleString()}</p>
+        <hr />
+      `;
+      walletActivity.innerHTML += info;
+    } else {
+      walletActivity.innerHTML += `<p>Tidak ditemukan transaksi untuk ${address}</p>`;
+    }
+  } catch (err) {
+    walletActivity.innerHTML += `<p class="text-danger">Gagal mengambil data untuk ${address}</p>`;
   }
-
-  data.slice(0, 5).forEach((item) => {
-    const div = document.createElement("div");
-    div.className = "mb-2 border-bottom pb-2";
-    div.innerHTML = `
-      <strong>${item.address}</strong><br />
-      Terakhir aktif: ${new Date().toLocaleString()}<br />
-      Transaksi terakhir: Simulasi transfer token
-    `;
-    walletActivity.appendChild(div);
-  });
 }
 
-// Inisialisasi awal
+// Inisialisasi
 loadWallets();
-loadWalletActivity();
-setInterval(loadWalletActivity, 60000); // auto-refresh tiap 1 menit
+
 
 
 
