@@ -4,22 +4,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  reset:
+  delete-all:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Delete all files except .github
+      - name: Delete all files except .github folder
         run: |
-          shopt -s extglob
-          rm -rf !( .github )
+          find . -mindepth 1 -not -path './.git*' -not -path './.github*' -exec rm -rf {} +
 
       - name: Commit and push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add -A
-          git commit -m "Reset repo (delete all files)"
-          git push origin main
+          git commit -m "Reset repository (delete all files except .github)"
+          git push
+
 
