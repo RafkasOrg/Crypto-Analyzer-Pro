@@ -1,0 +1,24 @@
+name: Reset GitHub Repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Remove all files except .github
+        run: |
+          shopt -s extglob
+          rm -rf !(.github)
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "rafka-bot"
+          git config --global user.email "rafka@example.com"
+          git add -A
+          git commit -m "🔥 Reset all files in repo"
+          git push
