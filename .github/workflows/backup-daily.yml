@@ -1,0 +1,25 @@
+name: Autobackup Crypto Analyzer Daily
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # Setiap hari jam 08:00 WIB
+  workflow_dispatch:
+
+jobs:
+  autobackup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Autobackup
+        run: node autobackup.js
