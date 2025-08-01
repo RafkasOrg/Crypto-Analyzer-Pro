@@ -1,2 +1,3 @@
-// Dummy Config
-const config = {};
+port const SUPABASE_URL = "https://pppcusoyjkvlsfdurgpv.supabase.co";
+export const SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho"; // API key dari Supabase
+export const SUPABASE_ROLE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1Mzk3OTc0MCwiZXhwIjoyMDY5NTU1NzQwfQ.mpBEcXnC9saIjtPVbhtoaX9yXVl2mOOJZxxGbplsD2c";
