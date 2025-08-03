@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Analyzer Pro</title>
+  <link rel="stylesheet" href="asset/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" type="image/x-icon">
+</head>
+<body>
 
+  <!-- Sidebar Kiri (Sticky) -->
+  <aside class="sidebar">
+    <!-- Logo Sama dengan Hero Section -->
+    <div class="sidebar-logo">
+      <img src="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" alt="Crypto Analyzer Pro" class="sidebar-logo-img">
+      <h1>Crypto Analyzer Pro</h1>
+    </div>
+
+    <!-- Navigasi Fitur -->
+    <nav class="feature-nav">
+      <a href="#market" class="nav-link">1. Market Fundamentals</a>
+      <a href="#onchain" class="nav-link">2. On-Chain Analytics</a>
+      <a href="#badwallet" class="nav-link">3. Bad Wallet Tracker</a>
+      <a href="#autotrading" class="nav-link">4. Smart Alerts & Auto-Trading</a>
+      <a href="#ai-rating" class="nav-link">5. AI Coin Rating</a>
+    </nav>
+
+    <!-- Tombol CTA -->
+    <div class="cta-buttons">
+      <a href="auth/register.html" class="btn-primary">Mulai Sekarang</a>
+      <a href="#features" class="btn-outline">Pelajari Fitur</a>
+    </div>
+  </aside>
+
+  <!-- Konten Utama -->
+  <main class="main-content">
+
+    <!-- Navbar Atas (untuk tombol Masuk) -->
+    <header class="topbar">
+      <a href="auth/login.html" class="btn-login">Masuk</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <!-- Logo di Tengah + Teks di Bawah -->
+      <div class="hero-logo">
+        <img src="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" alt="Crypto Analyzer Pro" class="hero-logo-img">
+        <h1>Crypto Analyzer Pro</h1>
+        <p>Platform analisis crypto real-time dalam satu tampilan — aman, cepat, dan profesional.</p>
+      </div>
+
+      <!-- Animasi Koin (Tidak Bertabrakan) -->
+      <div class="coin-animation">
+        <div class="coin btc animate" style="top: 80px; left: 15%;">₿ BTC</div>
+        <div class="coin eth animate" style="top: 50px; right: 15%;">Ξ ETH</div>
+        <div class="coin sol animate" style="top: 120px; left: 30%;">◎ SOL</div>
+        <div class="coin doge animate" style="top: 90px; right: 30%;">Ð DOGE</div>
+        <div class="coin xrp animate" style="top: 150px; left: 45%;">XRP</div>
+      </div>
+    </section>
+
+    <!-- Misi Kami -->
+    <section class="mission">
+      <h2>Misi Kami</h2>
+      <p>
+        Sesuatu akan terjadi di masa depan. Apakah kamu akan tetap di platform ini untuk menikmati semua fitur yang akan kami hadirkan secara lengkap, akurat, dan profesional?
+        <br><br>
+        Bahkan jika kamu seorang pemula, kamu akan dengan mudah menggunakan fitur-fitur ini seperti seorang profesional.
+        <br><br>
+        Nikmati semua fitur pro tentang dunia crypto. Terima kasih atas kepercayaanmu — kami akan jaga kepercayaan itu dengan sepenuh hati.
+      </p>
+    </section>
+
+    <!-- Fitur Utama -->
+    <section id="features" class="features-section">
+
+      <!-- Market Fundamentals -->
+      <div id="market" class="feature-box">
+        <div class="feature-text">
+          <h3>1. Market Fundamentals</h3>
+          <p>Fitur ini berguna untuk Anda tanpa harus membuka situs lain. Semua data dalam satu tampilan, sehingga Anda bisa trading dengan aman.</p>
+          <ul>
+            <li>Anda dapat melihat harga coin global secara real time</li>
+            <li>Volume perdagangan yang bergerak setiap detik akan kami analisa</li>
+            <li>Menampilkan data market cap secara akurat</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- On-Chain Analytics -->
+      <div id="onchain" class="feature-box">
+        <div class="feature-text">
+          <h3>2. On-Chain Analytics</h3>
+          <p>Fitur ini sangat berguna bagi para trader untuk melihat pergerakan wallet investor besar. Anda akan mendapatkan data tentang di mana investor besar sedang melakukan transaksi besar.</p>
+          <ul>
+            <li>Whale tracking untuk melihat pergerakan wallet institusi atau investor besar</li>
+            <li>Data diambil setiap menit agar selalu terbaru</li>
+            <li>Ada sistem alert atau notifikasi jika ada pergerakan besar</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bad Wallet Tracker -->
+      <div id="badwallet" class="feature-box">
+        <div class="feature-text">
+          <h3>3. Bad Wallet Tracker</h3>
+          <p>Fitur ini akan melacak aktivitas wallet yang sering merugikan orang lain. Anda akan terhindar dari kerugian jika menggunakan fitur ini.</p>
+          <ul>
+            <li>Pergerakan oknum investor akan menjadi alat Anda untuk tetap aman di dunia crypto</li>
+            <li>Data real-time dan Anda dapat menyimpannya</li>
+            <li>Jika terjadi pergerakan mencurigakan, akan ada alarm untuk menghindari risiko</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Smart Alerts & Auto-Trading -->
+      <div id="autotrading" class="feature-box">
+        <div class="feature-text">
+          <h3>4. Smart Alerts & Auto-Trading</h3>
+          <p>Dengan satu klik, Anda bisa melakukan trading secara otomatis. Santai, tidak ribet, dan dibantu teknologi AI yang sudah teruji.</p>
+          <ul>
+            <li>Buat akun di satu tempat, lalu lakukan trading otomatis</li>
+            <li>Dibantu AI yang menggabungkan sinyal market dan analisa cerdas</li>
+            <li>Anda bisa trading otomatis berdasarkan sinyal yang valid</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AI Coin Rating -->
+      <div id="ai-rating" class="feature-box">
+        <div class="feature-text">
+          <h3>5. AI Coin Rating</h3>
+          <p>Fitur ini menampilkan 20+ koin yang berpotensi naik. Alat yang sangat baik untuk keputusan trading Anda.</p>
+          <ul>
+            <li>Data real-time dan selalu update setiap menit</li>
+            <li>Setiap koin diambil berdasarkan analisa mendalam dari AI</li>
+            <li>Skor koin ditampilkan dengan jelas: hijau (naik), kuning (netral), merah (turun)</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Tombol Masuk di Bawah Fitur -->
+    <section class="cta-bottom">
+      <h2>Siap Mulai Analisis Crypto?</h2>
+      <p>Daftar sekarang dan dapatkan akses ke semua fitur pro secara gratis.</p>
+      <a href="auth/login.html" class="btn-primary">Masuk ke Dashboard</a>
+    </section>
+
+    <!-- Sumber Data -->
+    <section class="data-source">
+      <h3>Sumber Data Kami</h3>
+      <p>Kami mengambil data dari platform terpercaya untuk akurasi maksimal:</p>
+      <div class="tags">
+        <span>CoinGecko</span>
+        <span>Dune Analytics</span>
+        <span>Whale Alert</span>
+        <span>Etherscan</span>
+        <span>Chainabuse</span>
+        <span>Media Sosial Crypto</span>
+      </div>
+    </section>
+
+    <!-- Media Sosial -->
+    <section class="social-section">
+      <h3>Ikuti Kami</h3>
+      <div class="social-links">
+        <a href="#" class="social-item">📘 Facebook</a>
+        <a href="#" class="social-item">📘 Instagram</a>
+        <a href="#" class="social-item">🐦 Twitter</a>
+        <a href="#" class="social-item">📺 YouTube</a>
+        <a href="#" class="social-item">📱 Telegram</a>
+        <a href="#" class="social-item">💬 Discord</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Crypto Analyzer Pro. Dibuat dengan ❤️ oleh Razia Tech & Otong Hamandong.</p>
+    </footer>
+
+  </main>
+
+  <!-- Scroll Smooth -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
