@@ -1,0 +1,463 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Topbar (Tombol Masuk di Kanan Atas) */
+.topbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.btn-login {
+  background: transparent;
+  color: #D4AF37;
+  border: 1px solid #D4AF37;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.btn-login:hover {
+  background: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Sidebar Kiri */
+.sidebar {
+  width: 280px;
+  background: #121212;
+  border-right: 1px solid #333;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+/* Logo Sidebar Sama dengan Hero */
+.sidebar-logo {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.sidebar-logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(185, 128, 240, 0.7);
+  border: 2px solid #D4AF37;
+  margin-bottom: 12px;
+}
+
+.sidebar-logo h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #D4AF37, #B980F0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.7),
+    0 0 20px rgba(185, 128, 240, 0.5),
+    0 0 30px rgba(185, 128, 240, 0.3);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.feature-nav {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 16px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link:active {
+  background: #2a2a2a;
+  color: #D4AF37;
+}
+
+.cta-buttons {
+  margin-top: auto;
+  width: 100%;
+}
+
+.btn-primary {
+  display: block;
+  background: #D4AF37;
+  color: #0a0a0a;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.btn-outline {
+  display: block;
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.btn-outline:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* Konten Utama */
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  padding: 20px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 100px 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Logo di Tengah + Teks di Bawah */
+.hero-logo {
+  margin-bottom: 40px;
+}
+
+.hero-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(185, 128, 240, 0.7);
+  border: 2px solid #D4AF37;
+  margin-bottom: 20px;
+}
+
+/* Teks Utama dengan Gradasi Emas + Neon & Glow */
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  background: linear-gradient(45deg, #D4AF37, #B980F0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.7),
+    0 0 20px rgba(185, 128, 240, 0.5),
+    0 0 30px rgba(185, 128, 240, 0.3);
+  letter-spacing: 1px;
+}
+
+.hero p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* Animasi Koin (Tidak Bertabrakan) */
+.coin-animation {
+  position: relative;
+  height: 200px;
+  margin: 30px 0;
+}
+
+.coin {
+  position: absolute;
+  color: #D4AF37;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.coin::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 4px;
+  background: #f7931a;
+}
+
+.btc::before { background: #f7931a; }
+.eth::before { background: #627eea; }
+.sol::before { background: #9945ff; }
+.doge::before { background: #c2a633; }
+.xrp::before { background: #00a4ef; }
+
+.animate {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Misi Kami */
+.mission {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  border-bottom: 1px solid #333;
+  margin-bottom: 40px;
+}
+
+.mission h2 {
+  color: #D4AF37;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.mission p {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+/* Fitur */
+.features-section {
+  padding: 40px 0;
+}
+
+.feature-box {
+  padding: 24px 0;
+  border-bottom: 1px solid #333;
+}
+
+.feature-text h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #D4AF37;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.feature-text p {
+  color: #ddd;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.feature-text ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.feature-text ul li {
+  color: #ccc;
+  margin: 8px 0;
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.5;
+}
+
+.feature-text ul li::before {
+  content: "•";
+  color: #D4AF37;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* CTA Bawah (Tombol Masuk) */
+.cta-bottom {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+  border-radius: 16px;
+  border: 1px solid #333;
+  box-shadow: 0 0 30px rgba(185, 128, 240, 0.1);
+}
+
+.cta-bottom h2 {
+  color: #D4AF37;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.cta-bottom p {
+  color: #ccc;
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+}
+
+/* Sumber Data */
+.data-source {
+  margin: 0 0 40px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.data-source h3 {
+  color: #D4AF37;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.tags span {
+  background: #2a2a2a;
+  color: #D4AF37;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Media Sosial */
+.social-section {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.social-section h3 {
+  color: #D4AF37;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.social-item {
+  color: #60a5f8;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.social-item:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+}
+
+/* Responsif */
+@media (max-width: 992px) {
+  .sidebar { width: 240px; }
+  .main-content { margin-left: 240px; }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+  .sidebar-logo {
+    margin-bottom: 12px;
+  }
+  .sidebar-logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  .sidebar-logo h1 {
+    font-size: 1rem;
+  }
+  .feature-nav {
+    margin: 0 10px;
+    flex-direction: row;
+    white-space: nowrap;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+  .cta-buttons { display: none; }
+  .main-content {
+    margin-left: 0;
+    padding: 16px;
+  }
+  .hero { padding: 80px 16px 20px; }
+  .hero-logo-img {
+    width: 60px;
+    height: 60px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .feature-box {
+    padding: 16px 0;
+  }
+  .cta-bottom {
+    padding: 40px 16px;
+  }
+}
