@@ -1,1 +1,175 @@
+/* Halaman Login */
+.login-page {
+  background: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
 
+/* Logo di Atas */
+.login-logo {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-logo .logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(185, 128, 240, 0.7);
+  border: 2px solid #D4AF37;
+  margin-bottom: 20px;
+}
+
+.login-logo h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  background: linear-gradient(45deg, #D4AF37, #B980F0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.7),
+    0 0 20px rgba(185, 128, 240, 0.5),
+    0 0 30px rgba(185, 128, 240, 0.3);
+  margin-bottom: 10px;
+}
+
+.login-logo p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* Container Form */
+.login-container {
+  background: #121212;
+  border-radius: 16px;
+  border: 1px solid #333;
+  box-shadow: 0 0 30px rgba(185, 128, 240, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-container h2 {
+  color: #D4AF37;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  color: #60a5f8;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Alert Error */
+.alert {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.alert.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+}
+
+/* Divider */
+.login-divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.login-divider span {
+  background: #121212;
+  padding: 0 15px;
+  color: #ccc;
+  position: relative;
+  z-index: 1;
+}
+
+.login-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #333;
+  transform: translateY(-50%);
+}
+
+/* Link Register */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+}
+
+.register-link a {
+  color: #D4AF37;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+  }
+  
+  .login-logo h1 {
+    font-size: 1.7rem;
+  }
+}
