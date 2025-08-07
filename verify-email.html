@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Email - Crypto Analyzer Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* GLOBAL STYLES */
+    :root {
+      --primary-color: #D4AF37;
+      --secondary-color: #B980F0;
+      --positive-color: #4ade80;
+      --negative-color: #f87171;
+      --background-dark: #121212;
+      --card-background: #1a1a1a;
+      --text-color: #e5e5e5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-dark);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .auth-container {
+      width: 100%;
+      max-width: 450px;
+      background: var(--card-background);
+      border-radius: 16px;
+      border: 1px solid #333;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .auth-header {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    
+    .auth-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    .auth-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+    }
+    
+    .auth-body {
+      padding: 30px;
+    }
+    
+    .verification-pending {
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .verification-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .verification-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .success-icon {
+      font-size: 3rem;
+      color: var(--positive-color);
+      margin-bottom: 15px;
+    }
+    
+    .error-icon {
+      font-size: 3rem;
+      color: var(--negative-color);
+      margin-bottom: 15px;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      color: #0a0a0a;
+    }
+    
+    .btn-primary:hover {
+      background: #c4a030;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .auth-footer {
+      padding: 20px 30px;
+      text-align: center;
+      border-top: 1px solid #333;
+      background: rgba(26, 26, 26, 0.7);
+    }
+    
+    .auth-switch {
+      color: #ccc;
+    }
+    
+    .auth-switch a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 480px) {
+      .auth-body, .auth-footer {
+        padding: 20px;
+      }
+      
+      .auth-title {
+        font-size: 1.8rem;
+      }
+      
+      .auth-subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <div class="auth-header">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Crypto Analyzer Pro</div>
+        </div>
+        <h1 class="auth-title">Verifikasi Email</h1>
+        <p class="auth-subtitle">Verifikasi email untuk mengaktifkan akun Anda</p>
+      </div>
+      <div class="auth-body">
+        <div class="verification-pending" id="verification-pending">
+          <div class="verification-icon">📧</div>
+          <h3>Periksa Email Anda</h3>
+          <p>Kami telah mengirimkan email verifikasi ke <span id="verification-email">email@example.com</span></p>
+          <p>Silakan klik tautan dalam email untuk memverifikasi akun Anda</p>
+          <p>Link akan berlaku selama 24 jam</p>
+          <button id="resend-verification" class="btn btn-primary">Kirim Ulang Email Verifikasi</button>
+        </div>
+        
+        <div class="verification-success" id="verification-success" style="display: none;">
+          <div class="success-icon">✅</div>
+          <h3>Email Terverifikasi!</h3>
+          <p>Akun Anda telah diverifikasi. Anda sekarang dapat masuk ke platform.</p>
+          <a href="login.html" class="btn btn-primary">Masuk ke Dashboard</a>
+        </div>
+        
+        <div class="verification-error" id="verification-error" style="display: none;">
+          <div class="error-icon">❌</div>
+          <h3>Verifikasi Gagal</h3>
+          <p>Token verifikasi tidak valid atau sudah kadaluwarsa.</p>
+          <p>Silakan daftar ulang atau minta link verifikasi baru.</p>
+          <a href="register.html" class="btn btn-primary">Daftar Ulang</a>
+        </div>
+      </div>
+      <div class="auth-footer">
+        <p class="auth-switch">
+          Sudah memverifikasi email? <a href="login.html">Masuk</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Inisialisasi Supabase
+    const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho';
+    const client = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Fungsi untuk verifikasi email
+    async function verifyEmail(token) {
+      try {
+        const { data, error } = await client.auth.verifyOtp({
+          token: token,
+          type: 'email'
+        });
+        
+        if (error) throw error;
+        
+        // Tampilkan pesan sukses
+        document.getElementById('verification-pending').style.display = 'none';
+        document.getElementById('verification-success').style.display = 'block';
+      } catch (error) {
+        console.error('Verification error:', error);
+        
+        // Tampilkan pesan error
+        document.getElementById('verification-pending').style.display = 'none';
+        document.getElementById('verification-error').style.display = 'block';
+      }
+    }
+    
+    // Fungsi kirim ulang verifikasi
+    async function resendVerification() {
+      const email = document.getElementById('verification-email').textContent;
+      
+      try {
+        await client.auth.resend({
+          type: 'signup',
+          email: email
+        });
+        
+        alert('Email verifikasi telah dikirim ulang. Silakan periksa inbox Anda.');
+      } catch (error) {
+        console.error('Resend error:', error);
+        alert('Terjadi kesalahan saat mengirim ulang email verifikasi.');
+      }
+    }
+    
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      const type = params.get('type');
+      
+      // Jika ada token di URL, lakukan verifikasi
+      if (token && type === 'email') {
+        await verifyEmail(token);
+      }
+      
+      // Resend verification button
+      document.getElementById('resend-verification').addEventListener('click', resendVerification);
+      
+      // Ambil email dari localStorage jika ada
+      const email = localStorage.getItem('verification-email');
+      if (email) {
+        document.getElementById('verification-email').textContent = email;
+      }
+    });
+  </script>
+</body>
+</html>
