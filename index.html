@@ -1,204 +1,802 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crypto Analyzer Pro</title>
-  <link rel="stylesheet" href="asset/css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" href="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Analyzer Pro - Platform Analisis Crypto Terbaik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+    <style>
+  /* GLOBAL STYLES */
+    :root {
+      --primary-color: #D4AF37;
+      --secondary-color: #B980F0;
+      --positive-color: #4ade80;
+      --negative-color: #f87171;
+      --background-dark: #121212;
+      --card-background: #1a1a1a;
+      --text-color: #e5e5e5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-dark);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      padding: 40px 0;
+    }
+    
+    .hero-content {
+      flex: 1;
+      padding-right: 40px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      gap: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.7),
+        0 0 20px rgba(185, 128, 240, 0.5),
+        0 0 30px rgba(185, 128, 240, 0.3);
+    }
+    
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .highlight {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.4rem;
+      color: #ccc;
+      margin-bottom: 30px;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .btn {
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      color: #0a0a0a;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background: #c4a030;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .stat-label {
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .dashboard-preview {
+      background: var(--card-background);
+      border-radius: 16px;
+      border: 1px solid #333;
+      width: 100%;
+      max-width: 600px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+    
+    .dashboard-preview:hover {
+      transform: translateY(-5px);
+    }
+    
+    .dashboard-header {
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .dashboard-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .dashboard-source {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    
+    .dashboard-table {
+      padding: 0 20px 20px;
+    }
+    
+    .table-header {
+      display: flex;
+      background: rgba(26, 26, 26, 0.9);
+      border-bottom: 1px solid #333;
+      padding: 0 15px;
+    }
+    
+    .header-cell {
+      padding: 12px 15px;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .table-row {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px solid #222;
+    }
+    
+    .cell {
+      padding: 12px 15px;
+    }
+    
+    .coin {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .coin-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #222;
+      border: 1px solid #333;
+    }
+    
+    .price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+    
+    .price-current {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+    
+    .price-change {
+      font-size: 0.85rem;
+      color: var(--positive-color);
+    }
+    
+    /* MISSION SECTION */
+    .mission-section {
+      padding: 80px 0;
+      background: var(--card-background);
+      border-radius: 16px;
+      margin: 40px 0;
+    }
+    
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .mission-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .mission-quote {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    
+    .mission-quote p {
+      margin-bottom: 20px;
+    }
+    
+    /* FEATURES SECTION */
+    .features-section {
+      padding: 80px 0;
+    }
+    
+    .features-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 50px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: var(--card-background);
+      border-radius: 16px;
+      border: 1px solid #333;
+      padding: 30px;
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .feature-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    
+    .feature-card p {
+      color: #ccc;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .feature-list {
+      list-style: none;
+      padding-left: 20px;
+    }
+    
+    .feature-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+    
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--positive-color);
+      font-weight: bold;
+    }
+    
+    /* DATA SOURCES SECTION */
+    .data-sources {
+      padding: 80px 0;
+      background: var(--card-background);
+      border-radius: 16px;
+      margin: 40px 0;
+    }
+    
+    .data-sources h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .data-sources p {
+      text-align: center;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+    }
+    
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .source-card {
+      background: var(--background-dark);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .source-card:hover {
+      transform: translateY(-5px);
+      background: #222;
+    }
+    
+    .source-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .source-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    
+    .source-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    
+    /* CTA SECTION */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .cta-section p {
+      color: #ccc;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    .cta-button {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+    }
+    
+    /* FOOTER */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-content {
+        padding-right: 0;
+        margin-bottom: 50px;
+      }
+      
+      .hero-cta {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .mission-quote {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Sidebar Kiri (Sticky) -->
-  <aside class="sidebar">
-    <!-- Logo Sama dengan Hero Section -->
-    <div class="sidebar-logo">
-      <img src="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" alt="Crypto Analyzer Pro" class="sidebar-logo-img">
-      <h1>Crypto Analyzer Pro</h1>
-    </div>
-
-    <!-- Navigasi Fitur -->
-    <nav class="feature-nav">
-      <a href="#market" class="nav-link">1. Market Fundamentals</a>
-      <a href="#onchain" class="nav-link">2. On-Chain Analytics</a>
-      <a href="#badwallet" class="nav-link">3. Bad Wallet Tracker</a>
-      <a href="#autotrading" class="nav-link">4. Smart Alerts & Auto-Trading</a>
-      <a href="#ai-rating" class="nav-link">5. AI Coin Rating</a>
-    </nav>
-
-    <!-- Tombol CTA -->
-    <div class="cta-buttons">
-      <a href="auth/register.html" class="btn-primary">Mulai Sekarang</a>
-      <a href="#features" class="btn-outline">Pelajari Fitur</a>
-    </div>
-  </aside>
-
-  <!-- Konten Utama -->
-  <main class="main-content">
-
-    <!-- Navbar Atas (untuk tombol Masuk) -->
-    <header class="topbar">
-      <a href="auth/login.html" class="btn-login">Masuk</a>
-    </header>
-
-    <!-- Hero Section -->
+  <div class="container">
+    <!-- HERO SECTION -->
     <section class="hero">
-      <!-- Logo di Tengah + Teks di Bawah -->
-      <div class="hero-logo">
-        <img src="image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q0YWYzNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I5ODBmMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjA4Ii8+PC9zdmc+" alt="Crypto Analyzer Pro" class="hero-logo-img">
-        <h1>Crypto Analyzer Pro</h1>
-        <p>Platform analisis crypto real-time dalam satu tampilan — aman, cepat, dan profesional.</p>
+      <div class="hero-content">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Crypto Analyzer Pro</div>
+        </div>
+        <h1 class="hero-title">Analisis Pasar Crypto dengan<br><span class="highlight">Akurasi Profesional</span></h1>
+        <p class="hero-subtitle">Platform analisis crypto real-time dalam satu tampilan — aman, cepat, dan profesional.</p>
+        <div class="hero-cta">
+          <a href="login.html" class="btn btn-primary">Masuk ke Dashboard</a>
+          <a href="#features" class="btn btn-secondary">Pelajari Fitur</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">99.9%</span>
+            <span class="stat-label">Uptime</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">15+</span>
+            <span class="stat-label">Sumber Data</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">50K+</span>
+            <span class="stat-label">Pengguna</span>
+          </div>
+        </div>
       </div>
-
-      <!-- Animasi Koin (Tidak Bertabrakan) -->
-      <div class="coin-animation">
-        <div class="coin btc animate" style="top: 80px; left: 15%;">₿ BTC</div>
-        <div class="coin eth animate" style="top: 50px; right: 15%;">Ξ ETH</div>
-        <div class="coin sol animate" style="top: 120px; left: 30%;">◎ SOL</div>
-        <div class="coin doge animate" style="top: 90px; right: 30%;">Ð DOGE</div>
-        <div class="coin xrp animate" style="top: 150px; left: 45%;">XRP</div>
+      <div class="hero-image">
+        <div class="dashboard-preview">
+          <div class="dashboard-header">
+            <div class="dashboard-title">Market Fundamentals</div>
+            <div class="dashboard-source">Source: CoinGecko, Dune, LunarCrush</div>
+          </div>
+          <div class="dashboard-table">
+            <div class="table-header">
+              <div class="header-cell" style="width: 50px">#</div>
+              <div class="header-cell" style="width: 250px">Coin</div>
+              <div class="header-cell" style="width: 140px">Price</div>
+              <div class="header-cell" style="width: 90px">24h</div>
+              <div class="header-cell" style="width: 160px">Market Cap</div>
+              <div class="header-cell" style="width: 160px">Volume</div>
+              <div class="header-cell" style="width: 80px">Dev</div>
+              <div class="header-cell" style="width: 80px">Community</div>
+            </div>
+            <div class="table-row">
+              <div class="cell" style="width: 50px; text-align: center">1</div>
+              <div class="cell coin" style="width: 250px">
+                <div class="coin-icon">BTC</div>
+                <div>
+                  <div class="coin-name">Bitcoin</div>
+                  <div class="coin-symbol">BTC</div>
+                </div>
+              </div>
+              <div class="cell price" style="width: 140px">
+                <div class="price-current">$63,450.00</div>
+                <div class="price-change">▲ 2.3%</div>
+              </div>
+              <div class="cell" style="width: 90px; color: var(--positive-color)">+2.3%</div>
+              <div class="cell" style="width: 160px">$1.23T</div>
+              <div class="cell" style="width: 160px">$28.5B</div>
+              <div class="cell" style="width: 80px; color: var(--positive-color)">9.2/10</div>
+              <div class="cell" style="width: 80px; color: var(--positive-color)">8.5/10</div>
+            </div>
+            <div class="table-row">
+              <div class="cell" style="width: 50px; text-align: center">2</div>
+              <div class="cell coin" style="width: 250px">
+                <div class="coin-icon">ETH</div>
+                <div>
+                  <div class="coin-name">Ethereum</div>
+                  <div class="coin-symbol">ETH</div>
+                </div>
+              </div>
+              <div class="cell price" style="width: 140px">
+                <div class="price-current">$3,450.00</div>
+                <div class="price-change" style="color: var(--negative-color)">▼ 1.2%</div>
+              </div>
+              <div class="cell" style="width: 90px; color: var(--negative-color)">-1.2%</div>
+              <div class="cell" style="width: 160px">$420.0B</div>
+              <div class="cell" style="width: 160px">$15.2B</div>
+              <div class="cell" style="width: 80px; color: var(--positive-color)">8.7/10</div>
+              <div class="cell" style="width: 80px; color: var(--positive-color)">8.5/10</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Misi Kami -->
-    <section class="mission">
-      <h2>Misi Kami</h2>
-      <p>
-        Sesuatu akan terjadi di masa depan. Apakah kamu akan tetap di platform ini untuk menikmati semua fitur yang akan kami hadirkan secara lengkap, akurat, dan profesional?
-        <br><br>
-        Bahkan jika kamu seorang pemula, kamu akan dengan mudah menggunakan fitur-fitur ini seperti seorang profesional.
-        <br><br>
-        Nikmati semua fitur pro tentang dunia crypto. Terima kasih atas kepercayaanmu — kami akan jaga kepercayaan itu dengan sepenuh hati.
-      </p>
+    <!-- MISSION SECTION -->
+    <section class="mission-section" id="mission">
+      <div class="mission-content">
+        <h2>Misi Kami</h2>
+        <div class="mission-quote">
+          <p>Sesuatu akan terjadi di masa depan. Apakah kamu akan tetap di platform ini untuk menikmati semua fitur yang akan kami hadirkan secara lengkap, akurat, dan profesional?</p>
+          <p>Bahkan jika kamu seorang pemula, kamu akan dengan mudah menggunakan fitur-fitur ini seperti seorang profesional.</p>
+          <p>Nikmati semua fitur pro tentang dunia crypto. Terima kasih atas kepercayaanmu — kami akan jaga kepercayaan itu dengan sepenuh hati.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Fitur Utama -->
-    <section id="features" class="features-section">
-
-      <!-- Market Fundamentals -->
-      <div id="market" class="feature-box">
-        <div class="feature-text">
-          <h3>1. Market Fundamentals</h3>
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+      <h2>Fitur Utama Kami</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Market Fundamentals</h3>
           <p>Fitur ini berguna untuk Anda tanpa harus membuka situs lain. Semua data dalam satu tampilan, sehingga Anda bisa trading dengan aman.</p>
-          <ul>
+          <ul class="feature-list">
             <li>Anda dapat melihat harga coin global secara real time</li>
             <li>Volume perdagangan yang bergerak setiap detik akan kami analisa</li>
             <li>Menampilkan data market cap secara akurat</li>
           </ul>
         </div>
-      </div>
-
-      <!-- On-Chain Analytics -->
-      <div id="onchain" class="feature-box">
-        <div class="feature-text">
-          <h3>2. On-Chain Analytics</h3>
+        <div class="feature-card">
+          <div class="feature-icon">⛓️</div>
+          <h3>On-Chain Analytics</h3>
           <p>Fitur ini sangat berguna bagi para trader untuk melihat pergerakan wallet investor besar. Anda akan mendapatkan data tentang di mana investor besar sedang melakukan transaksi besar.</p>
-          <ul>
+          <ul class="feature-list">
             <li>Whale tracking untuk melihat pergerakan wallet institusi atau investor besar</li>
             <li>Data diambil setiap menit agar selalu terbaru</li>
             <li>Ada sistem alert atau notifikasi jika ada pergerakan besar</li>
           </ul>
         </div>
-      </div>
-
-      <!-- Bad Wallet Tracker -->
-      <div id="badwallet" class="feature-box">
-        <div class="feature-text">
-          <h3>3. Bad Wallet Tracker</h3>
+        <div class="feature-card">
+          <div class="feature-icon">🚨</div>
+          <h3>Bad Wallet Tracker</h3>
           <p>Fitur ini akan melacak aktivitas wallet yang sering merugikan orang lain. Anda akan terhindar dari kerugian jika menggunakan fitur ini.</p>
-          <ul>
+          <ul class="feature-list">
             <li>Pergerakan oknum investor akan menjadi alat Anda untuk tetap aman di dunia crypto</li>
             <li>Data real-time dan Anda dapat menyimpannya</li>
             <li>Jika terjadi pergerakan mencurigakan, akan ada alarm untuk menghindari risiko</li>
           </ul>
         </div>
-      </div>
-
-      <!-- Smart Alerts & Auto-Trading -->
-      <div id="autotrading" class="feature-box">
-        <div class="feature-text">
-          <h3>4. Smart Alerts & Auto-Trading</h3>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>Smart Alerts & Auto-Trading</h3>
           <p>Dengan satu klik, Anda bisa melakukan trading secara otomatis. Santai, tidak ribet, dan dibantu teknologi AI yang sudah teruji.</p>
-          <ul>
+          <ul class="feature-list">
             <li>Buat akun di satu tempat, lalu lakukan trading otomatis</li>
             <li>Dibantu AI yang menggabungkan sinyal market dan analisa cerdas</li>
             <li>Anda bisa trading otomatis berdasarkan sinyal yang valid</li>
           </ul>
         </div>
-      </div>
-
-      <!-- AI Coin Rating -->
-      <div id="ai-rating" class="feature-box">
-        <div class="feature-text">
-          <h3>5. AI Coin Rating</h3>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3>AI Coin Rating</h3>
           <p>Fitur ini menampilkan 20+ koin yang berpotensi naik. Alat yang sangat baik untuk keputusan trading Anda.</p>
-          <ul>
+          <ul class="feature-list">
             <li>Data real-time dan selalu update setiap menit</li>
             <li>Setiap koin diambil berdasarkan analisa mendalam dari AI</li>
             <li>Skor koin ditampilkan dengan jelas: hijau (naik), kuning (netral), merah (turun)</li>
           </ul>
         </div>
       </div>
-
     </section>
 
-    <!-- Tombol Masuk di Bawah Fitur -->
-    <section class="cta-bottom">
+    <!-- DATA SOURCES SECTION -->
+    <section class="data-sources">
+      <h2>Sumber Data Kami</h2>
+      <p>Kami mengambil data dari platform terpercaya untuk akurasi maksimal:</p>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="source-icon">📊</div>
+          <h4>CoinGecko</h4>
+          <p>Data harga, market cap, dan volume pasar crypto</p>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🔍</div>
+          <h4>Dune Analytics</h4>
+          <p>On-chain analytics dan whale tracking</p>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">💬</div>
+          <h4>LunarCrush</h4>
+          <p>Social metrics dan data komunitas</p>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🧠</div>
+          <h4>AI Analysis</h4>
+          <p>Analisis cerdas berbasis machine learning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
       <h2>Siap Mulai Analisis Crypto?</h2>
       <p>Daftar sekarang dan dapatkan akses ke semua fitur pro secara gratis.</p>
-      <a href="auth/login.html" class="btn-primary">Masuk ke Dashboard</a>
+      <a href="login.html" class="btn btn-primary cta-button">Masuk ke Dashboard</a>
     </section>
 
-    <!-- Sumber Data -->
-    <section class="data-source">
-      <h3>Sumber Data Kami</h3>
-      <p>Kami mengambil data dari platform terpercaya untuk akurasi maksimal:</p>
-      <div class="tags">
-        <span>CoinGecko</span>
-        <span>Dune Analytics</span>
-        <span>Whale Alert</span>
-        <span>Etherscan</span>
-        <span>Chainabuse</span>
-        <span>Media Sosial Crypto</span>
-      </div>
-    </section>
-
-    <!-- Media Sosial -->
-    <section class="social-section">
-      <h3>Ikuti Kami</h3>
-      <div class="social-links">
-        <a href="#" class="social-item">📘 Facebook</a>
-        <a href="#" class="social-item">📘 Instagram</a>
-        <a href="#" class="social-item">🐦 Twitter</a>
-        <a href="#" class="social-item">📺 YouTube</a>
-        <a href="#" class="social-item">📱 Telegram</a>
-        <a href="#" class="social-item">💬 Discord</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
-      <p>&copy; 2025 Crypto Analyzer Pro. Dibuat dengan ❤️ oleh Razia Tech & Otong Hamandong.</p>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Crypto Analyzer Pro</div>
+        </div>
+        <div class="footer-links">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
+          <a href="#">Bantuan</a>
+          <a href="#">Kontak</a>
+        </div>
+        <div class="footer-copyright">
+          &copy; 2023 Crypto Analyzer Pro. All rights reserved.
+        </div>
+      </div>
     </footer>
+  </div>
 
-  </main>
-
-  <!-- Scroll Smooth -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+    // Fungsi untuk smooth scroll ke section
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
       });
     });
   </script>
-
 </body>
 </html>
