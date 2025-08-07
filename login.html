@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Crypto Analyzer Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* GLOBAL STYLES */
+    :root {
+      --primary-color: #D4AF37;
+      --secondary-color: #B980F0;
+      --positive-color: #4ade80;
+      --negative-color: #f87171;
+      --background-dark: #121212;
+      --card-background: #1a1a1a;
+      --text-color: #e5e5e5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-dark);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .auth-container {
+      width: 100%;
+      max-width: 450px;
+      background: var(--card-background);
+      border-radius: 16px;
+      border: 1px solid #333;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .auth-header {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    
+    .auth-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    .auth-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+    }
+    
+    .auth-body {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ccc;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px 15px;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+    
+    .form-forgot {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    
+    .form-forgot a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .form-forgot a:hover {
+      text-decoration: underline;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      color: #0a0a0a;
+    }
+    
+    .btn-primary:hover {
+      background: #c4a030;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+      color: #666;
+    }
+    
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #333;
+    }
+    
+    .divider::before {
+      margin-right: 10px;
+    }
+    
+    .divider::after {
+      margin-left: 10px;
+    }
+    
+    .auth-footer {
+      padding: 20px 30px;
+      text-align: center;
+      border-top: 1px solid #333;
+      background: rgba(26, 26, 26, 0.7);
+    }
+    
+    .auth-switch {
+      color: #ccc;
+    }
+    
+    .auth-switch a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    
+    .error-message {
+      color: var(--negative-color);
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .success-message {
+      color: var(--positive-color);
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 480px) {
+      .auth-body, .auth-footer {
+        padding: 20px;
+      }
+      
+      .auth-title {
+        font-size: 1.8rem;
+      }
+      
+      .auth-subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <div class="auth-header">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Crypto Analyzer Pro</div>
+        </div>
+        <h1 class="auth-title">Selamat Datang Kembali</h1>
+        <p class="auth-subtitle">Masuk ke akun Anda untuk mengakses semua fitur analisis crypto</p>
+      </div>
+      <div class="auth-body">
+        <!-- Magic Links Section -->
+        <div class="magic-links-section">
+          <div class="form-group">
+            <label for="email-magic" class="form-label">Masuk dengan Email</label>
+            <input type="email" id="email-magic" class="form-input" placeholder="masukkan email Anda">
+            <div class="error-message" id="email-magic-error">Email tidak valid</div>
+            <div class="success-message" id="email-magic-success" style="display: none;">Link login telah dikirim ke email Anda</div>
+          </div>
+          <button type="button" id="magic-link-btn" class="btn btn-primary">Kirim Link Login</button>
+          
+          <div class="divider">
+            <span>Atau masuk dengan password</span>
+          </div>
+        </div>
+        
+        <!-- Password Login Section -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-input" placeholder="masukkan email Anda" required>
+            <div class="error-message" id="email-error">Email tidak valid</div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Kata Sandi</label>
+            <input type="password" id="password" class="form-input" placeholder="masukkan kata sandi Anda" required>
+            <div class="error-message" id="password-error">Kata sandi minimal 6 karakter</div>
+          </div>
+          <div class="form-forgot">
+            <a href="forgot-password.html" class="forgot-password-link">Lupa kata sandi?</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Masuk</button>
+        </form>
+      </div>
+      <div class="auth-footer">
+        <p class="auth-switch">
+          Belum punya akun? <a href="register.html">Daftar sekarang</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Inisialisasi Supabase
+    const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho';
+    const client = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Validasi email
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    
+    // Validasi form login
+    function validateLoginForm() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      let isValid = true;
+      
+      // Validasi email
+      if (!validateEmail(email)) {
+        document.getElementById('email-error').textContent = 'Email tidak valid';
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('email-error').style.display = 'none';
+      }
+      
+      // Validasi password
+      if (password.length < 6) {
+        document.getElementById('password-error').textContent = 'Kata sandi minimal 6 karakter';
+        document.getElementById('password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('password-error').style.display = 'none';
+      }
+      
+      return isValid;
+    }
+    
+    // Fungsi login dengan password
+    async function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      try {
+        const { data, error } = await client.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+        
+        if (error) throw error;
+        
+        // Redirect ke dashboard
+        window.location.href = 'dashboard.html';
+      } catch (error) {
+        alert('Email atau kata sandi salah. Silakan coba lagi.');
+        console.error('Login error:', error);
+      }
+    }
+    
+    // Fungsi untuk magic link
+    async function sendMagicLink() {
+      const email = document.getElementById('email-magic').value;
+      
+      // Validasi email
+      if (!validateEmail(email)) {
+        document.getElementById('email-magic-error').textContent = 'Email tidak valid';
+        document.getElementById('email-magic-error').style.display = 'block';
+        return;
+      } else {
+        document.getElementById('email-magic-error').style.display = 'none';
+      }
+      
+      try {
+        const { error } = await client.auth.signInWithOtp({
+          email: email,
+          options: {
+            emailRedirectTo: 'http://localhost:3000/dashboard.html'
+          }
+        });
+        
+        if (error) throw error;
+        
+        // Tampilkan pesan sukses
+        document.getElementById('email-magic-success').style.display = 'block';
+        document.getElementById('magic-link-btn').textContent = 'Kirim Ulang Link';
+        document.getElementById('magic-link-btn').disabled = true;
+        
+        // Enable kembali setelah 30 detik
+        setTimeout(() => {
+          document.getElementById('magic-link-btn').disabled = false;
+          document.getElementById('magic-link-btn').textContent = 'Kirim Link Login';
+        }, 30000);
+      } catch (error) {
+        console.error('Error sending magic link:', error);
+        alert('Terjadi kesalahan saat mengirim link login. Silakan coba lagi.');
+      }
+    }
+    
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Magic link button
+      document.getElementById('magic-link-btn').addEventListener('click', sendMagicLink);
+      
+      // Form submit
+      document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (validateLoginForm()) {
+          login();
+        }
+      });
+      
+      // Auto-focus pada input email
+      document.getElementById('email').focus();
+    });
+  </script>
+</body>
+</html>
