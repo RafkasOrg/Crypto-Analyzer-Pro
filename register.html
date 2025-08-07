@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar - Crypto Analyzer Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* GLOBAL STYLES */
+    :root {
+      --primary-color: #D4AF37;
+      --secondary-color: #B980F0;
+      --positive-color: #4ade80;
+      --negative-color: #f87171;
+      --background-dark: #121212;
+      --card-background: #1a1a1a;
+      --text-color: #e5e5e5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-dark);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .auth-container {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-background);
+      border-radius: 16px;
+      border: 1px solid #333;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .auth-header {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #fff, #e5e5e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    
+    .auth-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    .auth-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+    }
+    
+    .auth-body {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ccc;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px 15px;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+    
+    .form-password-strength {
+      margin-top: 5px;
+      font-size: 0.85rem;
+      height: 16px;
+    }
+    
+    .password-strength-meter {
+      height: 4px;
+      background: #333;
+      border-radius: 2px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    
+    .password-strength-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+    
+    .terms-section {
+      margin: 20px 0;
+    }
+    
+    .terms-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .terms-checkbox input {
+      margin-top: 4px;
+    }
+    
+    .terms-text {
+      color: #ccc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    .terms-text a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .terms-text a:hover {
+      text-decoration: underline;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      color: #0a0a0a;
+    }
+    
+    .btn-primary:hover {
+      background: #c4a030;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .auth-footer {
+      padding: 20px 30px;
+      text-align: center;
+      border-top: 1px solid #333;
+      background: rgba(26, 26, 26, 0.7);
+    }
+    
+    .auth-switch {
+      color: #ccc;
+    }
+    
+    .auth-switch a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    
+    .error-message {
+      color: var(--negative-color);
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .success-icon {
+      font-size: 3rem;
+      color: var(--positive-color);
+      margin-bottom: 15px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 520px) {
+      .auth-body, .auth-footer {
+        padding: 20px;
+      }
+      
+      .auth-title {
+        font-size: 1.8rem;
+      }
+      
+      .auth-subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="auth-container">
+      <div class="auth-header">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Crypto Analyzer Pro</div>
+        </div>
+        <h1 class="auth-title">Buat Akun Baru</h1>
+        <p class="auth-subtitle">Daftar sekarang dan dapatkan akses ke semua fitur pro secara gratis</p>
+      </div>
+      <div class="auth-body">
+        <div class="register-form">
+          <form id="register-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Nama Lengkap</label>
+              <input type="text" id="name" class="form-input" placeholder="masukkan nama lengkap Anda" required>
+              <div class="error-message" id="name-error">Nama harus minimal 3 karakter</div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="masukkan email Anda" required>
+              <div class="error-message" id="email-error">Email tidak valid</div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="form-label">Kata Sandi</label>
+              <input type="password" id="password" class="form-input" placeholder="buat kata sandi Anda" required>
+              <div class="error-message" id="password-error">Kata sandi minimal 8 karakter</div>
+              <div class="form-password-strength" id="password-strength">Kekuatan kata sandi: <span id="strength-text">Sangat Lemah</span></div>
+              <div class="password-strength-meter">
+                <div class="password-strength-fill" id="strength-fill"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password" class="form-label">Konfirmasi Kata Sandi</label>
+              <input type="password" id="confirm-password" class="form-input" placeholder="ulangi kata sandi Anda" required>
+              <div class="error-message" id="confirm-error">Kata sandi tidak cocok</div>
+            </div>
+            
+            <div class="terms-section">
+              <div class="terms-checkbox">
+                <input type="checkbox" id="terms" required>
+                <div class="terms-text">
+                  Saya menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Crypto Analyzer Pro
+                </div>
+              </div>
+              <div class="error-message" id="terms-error">Anda harus menyetujui syarat dan ketentuan</div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+          </form>
+        </div>
+        
+        <div class="success-state" id="success-state">
+          <div class="success-icon">📧</div>
+          <h3>Verifikasi Email Diperlukan</h3>
+          <p>Kami telah mengirimkan email verifikasi ke <span id="verification-email">email@example.com</span></p>
+          <p>Silakan klik tautan dalam email untuk memverifikasi akun Anda</p>
+          <p>Link akan berlaku selama 24 jam</p>
+          <button type="button" id="resend-verification" class="btn btn-primary" style="margin-top: 20px;">Kirim Ulang Email Verifikasi</button>
+        </div>
+      </div>
+      <div class="auth-footer">
+        <p class="auth-switch">
+          Sudah punya akun? <a href="login.html">Masuk</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Inisialisasi Supabase
+    const supabaseUrl = 'https://pppcusoyjkvlsfdurgpv.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcGN1c295amt2bHNmZHVyZ3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM5Nzk3NDAsImV4cCI6MjA2OTU1NTc0MH0.PJOY8puQcps88f0e9ZyS2-ol1Zmm6y7p8zKJSgsQcho';
+    const client = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Validasi password strength
+    function checkPasswordStrength(password) {
+      let strength = 0;
+      
+      // Panjang minimal
+      if (password.length >= 8) strength += 25;
+      
+      // Huruf besar
+      if (/[A-Z]/.test(password)) strength += 25;
+      
+      // Angka
+      if (/[0-9]/.test(password)) strength += 25;
+      
+      // Karakter spesial
+      if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+      
+      return strength;
+    }
+    
+    // Update tampilan strength password
+    function updatePasswordStrength(strength) {
+      const strengthFill = document.getElementById('strength-fill');
+      const strengthText = document.getElementById('strength-text');
+      
+      strengthFill.style.width = `${strength}%`;
+      
+      if (strength < 25) {
+        strengthFill.style.background = 'var(--negative-color)';
+        strengthText.textContent = 'Sangat Lemah';
+      } else if (strength < 50) {
+        strengthFill.style.background = 'var(--negative-color)';
+        strengthText.textContent = 'Lemah';
+      } else if (strength < 75) {
+        strengthFill.style.background = 'var(--primary-color)';
+        strengthText.textContent = 'Sedang';
+      } else {
+        strengthFill.style.background = 'var(--positive-color)';
+        strengthText.textContent = 'Kuat';
+      }
+    }
+    
+    // Validasi form
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const terms = document.getElementById('terms').checked;
+      
+      let isValid = true;
+      
+      // Validasi nama
+      if (name.length < 3) {
+        document.getElementById('name-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('name-error').style.display = 'none';
+      }
+      
+      // Validasi email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('email-error').style.display = 'none';
+      }
+      
+      // Validasi password
+      if (password.length < 8) {
+        document.getElementById('password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('password-error').style.display = 'none';
+      }
+      
+      // Validasi konfirmasi password
+      if (password !== confirmPassword) {
+        document.getElementById('confirm-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('confirm-error').style.display = 'none';
+      }
+      
+      // Validasi syarat dan ketentuan
+      if (!terms) {
+        document.getElementById('terms-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('terms-error').style.display = 'none';
+      }
+      
+      return isValid;
+    }
+    
+    // Fungsi registrasi
+    async function register() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      try {
+        const { data, error } = await client.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              full_name: name
+            },
+            emailRedirectTo: 'http://localhost:3000/verify-email.html'
+          }
+        });
+        
+        if (error) throw error;
+        
+        if (data.user) {
+          // Tampilkan pesan verifikasi email
+          document.querySelector('.register-form').style.display = 'none';
+          document.getElementById('success-state').style.display = 'block';
+          document.getElementById('verification-email').textContent = email;
+          
+          console.log('✅ Pendaftaran berhasil! Silakan verifikasi email Anda');
+        }
+      } catch (error) {
+        alert(`Terjadi kesalahan: ${error.message}`);
+        console.error('Registration error:', error);
+      }
+    }
+    
+    // Fungsi kirim ulang verifikasi
+    async function resendVerification() {
+      const email = document.getElementById('verification-email').textContent;
+      
+      try {
+        await client.auth.resend({
+          type: 'signup',
+          email: email
+        });
+        
+        alert('Email verifikasi telah dikirim ulang. Silakan periksa inbox Anda.');
+      } catch (error) {
+        console.error('Resend error:', error);
+        alert('Terjadi kesalahan saat mengirim ulang email verifikasi.');
+      }
+    }
+    
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Password strength checker
+      document.getElementById('password').addEventListener('input', (e) => {
+        const strength = checkPasswordStrength(e.target.value);
+        updatePasswordStrength(strength);
+      });
+      
+      // Form submit
+      document.getElementById('register-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (validateForm()) {
+          register();
+        }
+      });
+      
+      // Resend verification button
+      document.getElementById('resend-verification').addEventListener('click', resendVerification);
+      
+      // Auto-focus pada input nama
+      document.getElementById('name').focus();
+    });
+  </script>
+</body>
+</html>
